@@ -21,3 +21,14 @@ cmake --build .
 ### application
 
 ./Figures
+
+## documentation
+
+# requirements
+
+* doxygen (>=1.8.11)
+* graphvis (>=2.38.0)
+
+## build documentation command
+
+graphviz Doxyfile
