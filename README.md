@@ -9,18 +9,24 @@ Recruitment task
 
 ## build
 
+```
 cmake .
 cmake --build .
+```
 
 ## run
 
 ### unit tests
 
+```
 ./UnitTests
+```
 
 ### application
 
+```
 ./Figures
+```
 
 ## documentation
 
