@@ -3,10 +3,11 @@
 
 namespace data_source {
 
+using namespace dom::figures;
+
 BinaryPolygonReader::BinaryPolygonReader() {}
 
 uint32_t BinaryPolygonReader::read(const char* data, uint32_t length) {
-  using namespace dom::figures;
 
   uint32_t bytes_read{0};
   uint32_t verticle_count = data[bytes_read++];

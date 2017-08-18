@@ -3,10 +3,11 @@
 
 namespace data_source {
 
+using namespace dom::figures;
+
 BinaryRectangleReader::BinaryRectangleReader() {}
 
 uint32_t BinaryRectangleReader::read(const char* data, uint32_t length) {
-  using namespace dom::figures;
 
   if (length < 4) {
     std::cout << "Not enough data to read rectangle." << std::endl;

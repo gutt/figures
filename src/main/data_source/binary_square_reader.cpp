@@ -3,10 +3,11 @@
 
 namespace data_source {
 
+using namespace dom::figures;
+
 BinarySquareReader::BinarySquareReader() {}
 
 uint32_t BinarySquareReader::read(const char* data, uint32_t length) {
-  using namespace dom::figures;
 
   if (length < 3) {
     std::cout << "not enough data to read square: " << length << std::endl;

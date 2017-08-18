@@ -2,11 +2,6 @@
 
 #include <cmath>
 
-#include "dom/figures/circle.h"
-#include "dom/figures/polygon.h"
-#include "dom/figures/rectangle.h"
-#include "dom/figures/square.h"
-
 using namespace dom::figures;
 
 const double DefaultFigureAreaCalculator::calculate(
@@ -48,6 +43,7 @@ const double DefaultFigureAreaCalculator::calculate(
   return width * height;
 }
 
+// Used algorithm described on: http://alienryderflex.com/polygon_area/
 const double DefaultFigureAreaCalculator::calculate(
     const std::shared_ptr<dom::figures::Polygon>& polygon) {
   double area = 0;

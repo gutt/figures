@@ -1,14 +1,14 @@
 #if !defined(AREA_CALCULATOR_H)
 #define AREA_CALCULATOR_H
 
+#include <memory>
+
 #include "dom/figures/circle.h"
 #include "dom/figures/figure.h"
 #include "dom/figures/polygon.h"
 #include "dom/figures/rectangle.h"
 #include "dom/figures/square.h"
-#include <cstdint>
-#include <iostream>
-#include <memory>
+
 
 class FigureAreaCalculatorI {
  public:

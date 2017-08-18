@@ -1,12 +1,13 @@
 #include "binary_circle_reader.h"
 #include <iostream>
 
+using namespace dom::figures;
+
 namespace data_source {
 
 BinaryCircleReader::BinaryCircleReader() {}
 
 uint32_t BinaryCircleReader::read(const char* data, uint32_t length) {
-  using namespace dom::figures;
 
   if (length < 3) {
     std::cout << "Not enough data to read circle." << std::endl;
