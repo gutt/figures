@@ -24,7 +24,7 @@ cmake --build .
 
 ## documentation
 
-# requirements
+### requirements
 
 * doxygen (>=1.8.11)
 * graphvis (>=2.38.0)
