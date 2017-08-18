@@ -1,7 +1,7 @@
 # figures
 Recruitment task
 
-## eeguirments
+## requirements
 
 * CMake (3.5.1)
 * GoogleTest (1.8.0)
@@ -9,4 +9,15 @@ Recruitment task
 
 ## build
 
+cmake .
 cmake --build .
+
+## run
+
+### unit tests
+
+./UnitTests
+
+### application
+
+./Figures
