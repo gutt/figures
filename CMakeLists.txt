@@ -8,7 +8,7 @@ file(GLOB_RECURSE sources_test src/test/*.cpp)
 file(GLOB_RECURSE data resources/*)
 add_executable(Figures ${sources} ${app} ${data})
 
-target_compile_options(Figures PUBLIC -fsanitize=leak -g -std=c++14 -lstdc++ -Wall -Wfloat-conversion)
+target_compile_options(Figures PUBLIC -fsanitize=leak -g -std=c++14 -Wall -Wfloat-conversion)
 target_include_directories(Figures PUBLIC src/main)
 
 file(COPY ${data} DESTINATION resources)

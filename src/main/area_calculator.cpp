@@ -66,6 +66,6 @@ const double DefaultFigureAreaCalculator::calculate(
 
 const double DefaultFigureAreaCalculator::calculate(
     const std::shared_ptr<dom::figures::Circle>& circle) {
-  constexpr double pi = std::atan(1) * 4;
+  double pi = std::atan(1) * 4;
   return (pi * std::pow(circle->getRadius(), 2));
 }

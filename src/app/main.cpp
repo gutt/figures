@@ -29,7 +29,7 @@ int main() {
 
     // read figure from source and move it to sumator
     while (!sr.isFigureQueueEmpty()) {
-      area_sumator.addFigure(std::move(sr.popFigure()));
+      area_sumator.addFigure(sr.popFigure());
     }
 
     // output data
