@@ -37,4 +37,6 @@ cmake --build .
 
 ### build documentation
 
-graphviz Doxyfile
+```
+doxygen Doxyfile
+```
