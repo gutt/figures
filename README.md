@@ -29,6 +29,6 @@ cmake --build .
 * doxygen (>=1.8.11)
 * graphvis (>=2.38.0)
 
-## build documentation command
+### build documentation
 
 graphviz Doxyfile
