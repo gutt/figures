@@ -24,7 +24,7 @@ class FigureAreaSumator : public FigureAreaSumatorI {
   std::mutex m_vector_mutex;
 
  public:
-  FigureAreaSumator(FigureAreaCalculatorI& area_calculator)
+  explicit FigureAreaSumator(FigureAreaCalculatorI& area_calculator)
       : m_area_calculator(area_calculator) {}
   virtual ~FigureAreaSumator(){};
 
