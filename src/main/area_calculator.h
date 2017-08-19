@@ -3,8 +3,8 @@
 
 #include <memory>
 
-#include "dom/figures/circle.h"
 #include "dom/figures/figure.h"
+#include "dom/figures/circle.h"
 #include "dom/figures/polygon.h"
 #include "dom/figures/rectangle.h"
 #include "dom/figures/square.h"

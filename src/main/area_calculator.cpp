@@ -49,7 +49,7 @@ const double DefaultFigureAreaCalculator::calculate(
   double area = 0;
 
   auto verticles = polygon->getVerticles();
-  int verticle_count = verticles.size();
+  auto verticle_count = verticles.size();
 
   for (int i = 1; i < verticle_count; i++) {
     int j = (i + 1) % verticle_count;
@@ -62,6 +62,6 @@ const double DefaultFigureAreaCalculator::calculate(
 
 const double DefaultFigureAreaCalculator::calculate(
     const std::shared_ptr<dom::figures::Circle>& circle) {
-  double pi = std::atan(1) * 4;
+  static const auto pi = std::atan(1) * 4;
   return (pi * std::pow(circle->getRadius(), 2));
 }

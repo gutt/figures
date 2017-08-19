@@ -16,7 +16,7 @@ class RectangleI {
   virtual ~RectangleI() {}
 };
 
-class Rectangle : public Figure, RectangleI {
+class Rectangle : public Figure, public RectangleI {
  public:
   class RectangleBuilder;
 
