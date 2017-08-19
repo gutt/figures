@@ -11,7 +11,9 @@ namespace dom {
 namespace figures {
 
 class PolygonI {
- protected:
+ public:
+  class PolygonBuilderI;
+
   using Verticles = std::vector<Point>;
 
   virtual Verticles getVerticles() const = 0;
@@ -19,9 +21,20 @@ class PolygonI {
   virtual ~PolygonI() {}
 };
 
+class PolygonI::PolygonBuilderI : public FigureBuilderI {
+ public:
+  virtual PolygonBuilderI& addVerticle(const double x, const double y)=0;
+
+  // inherited from FigureBuilderI
+  std::shared_ptr<Figure> build() override=0;
+
+  virtual ~PolygonBuilderI(){};
+};
+
+
 class Polygon : public Figure, public PolygonI {
  public:
-  class PolygonBuilder;
+   class PolygonBuilder;
 
  private:
   const Verticles m_verticles;
@@ -38,7 +51,7 @@ class Polygon : public Figure, public PolygonI {
   Verticles getVerticles() const override { return m_verticles; }
 };
 
-class Polygon::PolygonBuilder : public FigureBuilderI {
+class Polygon::PolygonBuilder : public PolygonBuilderI {
  private:
   Verticles m_verticles;
 
@@ -46,7 +59,7 @@ class Polygon::PolygonBuilder : public FigureBuilderI {
   PolygonBuilder() {}
   virtual ~PolygonBuilder() {}
 
-  PolygonBuilder& addVerticle(const double x, const double y);
+  PolygonBuilderI& addVerticle(const double x, const double y) override;
 
   std::shared_ptr<Figure> build() override;
 };

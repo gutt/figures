@@ -11,15 +11,28 @@ namespace figures {
 
 class CircleI {
  public:
+  class CircleBuilderI;
+
   virtual Point getPosition() const = 0;
   virtual double getRadius() const = 0;
 
   virtual ~CircleI(){};
 };
 
+class CircleI::CircleBuilderI : public FigureBuilderI {
+ public:
+   virtual CircleBuilderI& setPosition(const double x, const double y)=0;
+   virtual CircleBuilderI& setRadius(const double radius)=0;
+
+   // inherited from FigureBuilderI
+   virtual std::shared_ptr<Figure> build() override=0;
+
+   virtual ~CircleBuilderI(){};
+};
+
 class Circle : public Figure, public CircleI {
  public:
-  class CircleBuilder;
+   class CircleBuilder;
 
  private:
   const Point m_position;
@@ -40,7 +53,7 @@ class Circle : public Figure, public CircleI {
   double getRadius() const override { return m_radius; }
 };
 
-class Circle::CircleBuilder : public FigureBuilderI {
+class Circle::CircleBuilder : public CircleBuilderI {
  private:
   Point m_position;
   double m_radius;
@@ -51,8 +64,8 @@ class Circle::CircleBuilder : public FigureBuilderI {
   CircleBuilder();
   virtual ~CircleBuilder(){};
 
-  CircleBuilder& setPosition(const double x, const double y);
-  CircleBuilder& setRadius(const double radius);
+  CircleBuilderI& setPosition(const double x, const double y) override;
+  CircleBuilderI& setRadius(const double radius) override;
 
   std::shared_ptr<Figure> build() override;
 };

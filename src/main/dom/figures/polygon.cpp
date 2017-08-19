@@ -3,7 +3,7 @@
 namespace dom {
 namespace figures {
 
-Polygon::PolygonBuilder& Polygon::PolygonBuilder::addVerticle(const double x,
+PolygonI::PolygonBuilderI& Polygon::PolygonBuilder::addVerticle(const double x,
                                                               const double y) {
   m_verticles.push_back(Point(x, y));
   return *this;

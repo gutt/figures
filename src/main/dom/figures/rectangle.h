@@ -9,6 +9,8 @@ namespace figures {
 
 class RectangleI {
  public:
+  class RectangleBuilderI;
+
   virtual Point getPosition() const = 0;
   virtual double getWidth() const = 0;
   virtual double getHeight() const = 0;
@@ -16,9 +18,21 @@ class RectangleI {
   virtual ~RectangleI() {}
 };
 
+class RectangleI::RectangleBuilderI : public FigureBuilderI {
+ public:
+  virtual RectangleBuilderI& setPosition(const double x, const double y)=0;
+  virtual RectangleBuilderI& setWidth(const double width)=0;
+  virtual RectangleBuilderI& setHeight(const double height)=0;
+
+  // inherited from FigureBuilderI
+  virtual std::shared_ptr<Figure> build() override=0;
+
+  virtual ~RectangleBuilderI(){};
+};
+
 class Rectangle : public Figure, public RectangleI {
  public:
-  class RectangleBuilder;
+   class RectangleBuilder;
 
  private:
   // position
@@ -49,7 +63,7 @@ class Rectangle : public Figure, public RectangleI {
   double getHeight() const override { return m_height; }
 };
 
-class Rectangle::RectangleBuilder : public FigureBuilderI {
+class Rectangle::RectangleBuilder : public RectangleBuilderI {
  private:
   Point m_position;
   double m_width;
@@ -62,9 +76,9 @@ class Rectangle::RectangleBuilder : public FigureBuilderI {
   RectangleBuilder();
   virtual ~RectangleBuilder(){};
 
-  RectangleBuilder& setPosition(const double x, const double y);
-  RectangleBuilder& setWidth(const double width);
-  RectangleBuilder& setHeight(const double height);
+  RectangleBuilderI& setPosition(const double x, const double y) override;
+  RectangleBuilderI& setWidth(const double width) override;
+  RectangleBuilderI& setHeight(const double height) override;
 
   std::shared_ptr<Figure> build() override;
 };

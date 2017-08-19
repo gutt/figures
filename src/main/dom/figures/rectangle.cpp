@@ -6,7 +6,7 @@ namespace figures {
 Rectangle::RectangleBuilder::RectangleBuilder()
     : m_position{0.0, 0.0}, m_width{default_width}, m_height{default_height} {}
 
-Rectangle::RectangleBuilder& Rectangle::RectangleBuilder::setPosition(
+RectangleI::RectangleBuilderI& Rectangle::RectangleBuilder::setPosition(
     const double x,
     const double y) {
   m_position.setX(x);
@@ -14,13 +14,13 @@ Rectangle::RectangleBuilder& Rectangle::RectangleBuilder::setPosition(
   return *this;
 }
 
-Rectangle::RectangleBuilder& Rectangle::RectangleBuilder::setWidth(
+RectangleI::RectangleBuilderI& Rectangle::RectangleBuilder::setWidth(
     const double width) {
   m_width = width;
   return *this;
 }
 
-Rectangle::RectangleBuilder& Rectangle::RectangleBuilder::setHeight(
+RectangleI::RectangleBuilderI& Rectangle::RectangleBuilder::setHeight(
     const double height) {
   m_height = height;
   return *this;

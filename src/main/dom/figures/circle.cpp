@@ -7,14 +7,14 @@ namespace figures {
 Circle::CircleBuilder::CircleBuilder()
     : m_position{0.0, 0.0}, m_radius{default_radius} {}
 
-Circle::CircleBuilder& Circle::CircleBuilder::setPosition(const double x,
+CircleI::CircleBuilderI& Circle::CircleBuilder::setPosition(const double x,
                                                           const double y) {
   m_position.setX(x);
   m_position.setY(y);
   return *this;
 }
 
-Circle::CircleBuilder& Circle::CircleBuilder::setRadius(const double radius) {
+CircleI::CircleBuilderI& Circle::CircleBuilder::setRadius(const double radius) {
   m_radius = radius;
   return *this;
 }

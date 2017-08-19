@@ -11,10 +11,23 @@ namespace figures {
 
 class SquareI {
  public:
+  class SquareBuilderI;
+
   virtual Point getPosition() const = 0;
   virtual double getLength() const = 0;
 
   virtual ~SquareI() {}
+};
+
+class SquareI::SquareBuilderI : public FigureBuilderI {
+ public:
+   virtual SquareBuilderI& setPosition(const double x, const double y)=0;
+   virtual SquareBuilderI& setSideLength(const double side_length)=0;
+
+  // inherited from FigureBuilderI
+  virtual std::shared_ptr<Figure> build() override=0;
+
+  virtual ~SquareBuilderI(){};
 };
 
 class Square : public Figure, public SquareI {
@@ -42,7 +55,7 @@ class Square : public Figure, public SquareI {
   double getLength() const override { return m_side_length; }
 };
 
-class Square::SquareBuilder : public FigureBuilderI {
+class Square::SquareBuilder : public SquareBuilderI {
  private:
   Point m_position;
   double m_side_length;
@@ -53,8 +66,8 @@ class Square::SquareBuilder : public FigureBuilderI {
   SquareBuilder();
   virtual ~SquareBuilder(){};
 
-  SquareBuilder& setPosition(const double x, const double y);
-  SquareBuilder& setSideLength(const double side_length);
+  SquareBuilderI& setPosition(const double x, const double y) override;
+  SquareBuilderI& setSideLength(const double side_length) override;
 
   std::shared_ptr<Figure> build() override;
 };
