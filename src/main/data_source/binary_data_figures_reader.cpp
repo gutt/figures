@@ -22,14 +22,10 @@ std::shared_ptr<Figure> BinaryDataFiguresReader::popFigure() {
 uint32_t BinaryDataFiguresReader::read(const char* data, const int data_size) {
   uint32_t cursor = 0;
 
-  int32_t data_available = data_size - cursor;
-
-  while (data_available > 0) {
-    int figure_id = data[cursor];
+  while (data_size - cursor > 0) {
     BinaryFigureReader* binaryreader = nullptr;
 
-    cursor++;
-    data_available = data_size - cursor;
+    int figure_id = data[cursor++];
 
     Type type = m_id_to_type_ref[figure_id];
     switch (type) {
@@ -50,20 +46,23 @@ uint32_t BinaryDataFiguresReader::read(const char* data, const int data_size) {
         break;
 
       default:
-        // TODO: handle unknown figure!
-        break;
+        std::cout << "Unknown figure in binary data: " << figure_id << std::endl;
+        throw std::exception();
     }
 
     if (binaryreader != nullptr) {
       std::shared_ptr<dom::figures::Figure> figure;
-      cursor += binaryreader->read(&data[cursor], data_available);
+      cursor += binaryreader->read(&data[cursor], data_size - cursor);
       {
         std::lock_guard<std::mutex> lock(m_queue_mutex);
         m_figure_queue.push(binaryreader->getFigure());
       }
     }
-
-    data_available = data_size - cursor;
+    else
+    {
+      std::cout << "Binary reader is nullptr!" << std::endl;
+      throw std::exception();
+    }
   }
   return cursor;
 }
